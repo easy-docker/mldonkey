@@ -6,6 +6,8 @@ if [ ! -f /var/lib/mldonkey/downloads.ini ]; then
     echo "Waiting for mldonkey to start..."
     sleep 5
     /usr/lib/mldonkey/mldonkey_command -p "" "set allowed_ips 0.0.0.0/0" "set temp_directory /temp"
+    /usr/lib/mldonkey/mldonkey_command -p '' "set enable_kademlia true" "set enable_overnet true"
+    /usr/lib/mldonkey/mldonkey_command -p '' "set ED2K-update_server_list_client true" "set ED2K-update_server_list_server true" "set ED2K-update_server_list_server_met true"
     /usr/lib/mldonkey/mldonkey_command -p '' "share 0 /incoming/files incoming_files" "share 0 /incoming/directories incoming_directories"
     /usr/lib/mldonkey/mldonkey_command -p '' "unshare incoming/files" "unshare incoming/directories"
     /usr/lib/mldonkey/mldonkey_command -p '' "reshare"
